@@ -1,6 +1,51 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+/*==================================
+Description:
+    Given two strings needle and haystack, return the index of the 
+    first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
+Example 1
+    Input: haystack = "sadbutsad", needle = "sad"
+    Output: 0
+    Explanation: "sad" occurs at index 0 and 6.
+    The first occurrence is at index 0, so we return 0.
+
+Example 2
+    Input: haystack = "leetcode", needle = "leeto"
+    Output: -1
+    Explanation: "leeto" did not occur in "leetcode", so we return -1.
+
+Constraints
+    1 <= haystack.length, needle.length <= 104
+    haystack and needle consist of only lowercase English characters.
+
+*/
+
+// Loop through all...
+// 0 ms
 class Solution {
 public:
     int strStr(string haystack, string needle) {
-        
+        int len_needle = needle.size();
+        int len_haystack = haystack.size();
+
+        // First, check the length possibility
+        if (len_haystack < len_needle) return -1;
+
+        if (len_haystack == len_needle){
+            if (haystack.compare(needle) == 0) return 0; else return -1;
+        }
+
+        for (int i = 0; i < len_haystack; i++) {
+            if (i + len_needle > len_haystack) break;
+
+            if (haystack.compare(i,len_needle,needle) == 0) return i;
+        }
+
+        return -1;
     }
 };
