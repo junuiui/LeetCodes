@@ -53,10 +53,13 @@ Description
         0 <= val <= 100
  */
 
+=======
+>>>>>>> f7855e0 (27 added)
 class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
         
+<<<<<<< HEAD
         int count = 0;
         int len = nums.size();
         auto new_end = std::remove_if(nums.begin(), nums.end(), [val, &count](int x) {
@@ -68,5 +71,7 @@ public:
         });
         nums.erase(new_end, nums.end());
         return len - count;
+=======
+>>>>>>> f7855e0 (27 added)
     }
 };
