@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include <iostream>
 #include <string>
 
@@ -47,5 +48,11 @@ public:
         }
 
         return -1;
+=======
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        
+>>>>>>> 1f7e5ff (28. Find the Index of the First Occurrence in a String updated)
     }
 };
