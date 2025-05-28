@@ -1,10 +1,6 @@
 #include <iostream>
-#include <string>
-#include <algorithm>
-#include <stack>
 #include <vector>
-
-using namespace std;
+#include <string>
 
 /*
 Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', 
@@ -44,37 +40,6 @@ Constraints:
 class Solution {
 public:
     bool isValid(string s) {
-        int len = s.length();
-        
-        // has to be even number (pair)
-        if (len % 2 != 0) return false;
 
-        stack<char> opening;
-
-        for (char c : s) {
-            if (c == '(' || c == '{' || c == '[') {
-                opening.push(c);
-            } 
-            else {
-                if (opening.empty()) {
-                    return false;
-                }
-                else {
-                    char l = opening.top();
-                    switch (c) {
-                        case ')': if (l != '(') return false; break;
-                        case '}': if (l != '{') return false; break;
-                        case ']': if (l != '[') return false; break;
-                        default: break;
-                    }
-                }
-                opening.pop();
-            }
-        }
-
-        // check remaining open brackets
-        if (!opening.empty()) return false;
-
-        return true;
     }
 };
