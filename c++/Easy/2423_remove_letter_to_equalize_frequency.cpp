@@ -1,6 +1,9 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <unordered_map>
+#include <unordered_set>
 
 /*
 You are given a 0-indexed string word, consisting of lowercase English letters. 
@@ -36,7 +39,38 @@ using namespace std;
 
 class Solution {
 public:
-    bool equalFrequency(string word) {
-        
+    bool equalFrequency(string word){
+        unordered_map<char, int> cnt;
+
+        for(char ch : word)
+        {
+            cnt[ch]++;
+        }
+
+        for(char ch = 'a'; ch <= 'z'; ch++)
+        {
+            if(cnt.find(ch) == cnt.end()) 
+            continue;
+
+            cnt[ch]--;
+
+            unordered_set<int> freqSet;
+            for(auto it : cnt)
+            {
+                if(it.second > 0)
+                {
+                    freqSet.insert(it.second);
+                }
+            }
+
+            if(freqSet.size() == 1)
+            {
+                return true;
+            }
+
+            cnt[ch]++;
+        }
+
+        return false;
     }
 };
