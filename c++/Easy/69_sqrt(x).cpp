@@ -2,6 +2,7 @@
 #include <math.h>
 using namespace std;
 
+// Using Binary Search
 class Solution {
 public:
     int mySqrt(int x) {
@@ -23,4 +24,23 @@ public:
         return std::round(upper);
     }
 };
-// 1 4 9 16
+
+// Using UpperBound Loop (too many type casting..)
+class Solution {
+public:
+    int mySqrt(int x) {
+        if (x == 0) return 0;
+        if (x == 1) return 1;
+
+        long long lower, upper;
+        
+        for (int i = 1; i <= x/2; i++){
+            lower = static_cast<long long>(i) * static_cast<long long>(i);
+            upper = static_cast<long long>(i+1) * static_cast<long long>(i+1);
+
+            if (x >= lower && x < upper) return i;
+        }
+
+        return -1;
+    }
+};
