@@ -1,3 +1,5 @@
+
+// 0 ms
 class Solution {
 public:
     vector<int> shortestToChar(string s, char c) {
@@ -11,7 +13,6 @@ public:
             while (curr < s_len){
                 if (s[curr] == c) {
                     result[i] = curr-i;
-                    cout << "i: " << i << " | curr: " << curr << " | s[curr]: " << s[curr] << endl;
                     break;
                 }
                 curr++;
@@ -24,18 +25,36 @@ public:
             while (curr >= 0){
                 if (s[curr] == c) {
                     if (result[i] > (i-curr)) result[i] = i - curr;
-                    cout << "i: " << i << " | curr: " << curr << " | s[curr]: " << s[curr] << endl;
                     break;
                 }
                 curr--;
             }
         }
+        return result;
+    }
+};
 
-        cout << "result...\n";
-        for (int k : result){
-            cout << k << " ";
+
+// 0 ms
+class Solution {
+public:
+    vector<int> shortestToChar(string s, char c) {
+        int s_len = s.length();
+        vector<int> result(s_len, s_len);
+
+        // left to right
+        int curr = -(2 * s_len);
+        for (int i = 0; i < s_len; i++){
+            if (s[i] == c) curr = i;
+            result[i] = i - curr;
         }
-        cout << endl;
+
+        // right to left
+        curr = s_len * 2;
+        for (int i = s_len-1; i >= 0; i--){
+            if (s[i] == c) curr = i;
+            result[i] = min(result[i], curr - i);
+        }
 
         return result;
     }
