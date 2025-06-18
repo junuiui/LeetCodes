@@ -25,7 +25,12 @@ public:
             int w = right - left;
 
             max_area = max(max_area, h * w);
+
+            if (height[left] < height[right]) left++;
+            else right--;
         }
+
+        return max_area;
 
     }
 };

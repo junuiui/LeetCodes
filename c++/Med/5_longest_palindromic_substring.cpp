@@ -16,6 +16,8 @@ public:
             maxPalindromeIndex(i, i+1, s, index, maxLen);
         }
 
+        return s.substr(index, maxLen);
+
     }
 
 private:

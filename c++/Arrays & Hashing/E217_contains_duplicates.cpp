@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// // Sort Version
+// // Sort Version 15ms
 // class Solution {
 // public:
 //     bool containsDuplicate(vector<int>& nums) {
@@ -29,7 +29,7 @@ using namespace std;
 //     }
 // };
 
-// Hash Map?
+// Hash Map? 52 ms
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
