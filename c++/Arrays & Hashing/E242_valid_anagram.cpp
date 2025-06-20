@@ -18,9 +18,18 @@ public:
 
         vector<int> count(26);
 
-        sort(s.begin(), s.end());
-        sort(t.begin(), t.end());
+        for (char c : s) {
+            count[c - 'a']++;
+        }
 
-        return s.compare(t) == 0;
+        for (char c : t) {
+            count[c - 'a']--;
+        }
+
+        for (int i : count){
+            if (i != 0) return false;
+        }
+
+        return true;
     }
 };
